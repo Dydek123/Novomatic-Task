@@ -38,14 +38,14 @@ export interface ITunes {
 }
 
 export interface ITunesError {
-    resultCount: number,
-    results: []
+    cod: string,
+    message: string
 }
 
 export interface ITunesState {
     data: ITunes | null,
     loading: boolean,
-    error: string
+    error: string,
 }
 
 interface IGetAlbumAction {

@@ -37,6 +37,11 @@ export interface ITunes {
     "primaryGenreName": string,
 }
 
+export interface ITunesData {
+    resultCount: number,
+    results: ITunes[]
+}
+
 export interface ITunesError {
     cod: string,
     message: string
@@ -77,4 +82,3 @@ export interface IAlertAction {
 export interface IAlertState {
     message: string
 }
-

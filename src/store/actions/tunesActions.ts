@@ -1,13 +1,12 @@
 import {ThunkAction} from 'redux-thunk';
 import {RootState} from "../index";
-import {GET_ARTIST, ITunes, ITunesError, SET_ERROR, SET_LOADING, TunesAction} from '../types';
+import {GET_ARTIST, ITunes, ITunesData, ITunesError, SET_ERROR, SET_LOADING, TunesAction} from '../types';
 
 export const getArtistDetails = (name: string): ThunkAction<void, RootState, null, TunesAction> => {
     return async dispatch => {
         try {
             const searchArtist:string = name.toLowerCase().replace(' ' , '+');
             const res = await fetch(`https://itunes.apple.com/search?term=${searchArtist}`);
-
             if (!res.ok) {
                 const resData: ITunesError = await res.json();
                 throw new Error(resData.message);

@@ -9,6 +9,7 @@ const initialState : ITunesState= {
 export default (state = initialState, action: TunesAction): ITunesState => {
     switch (action.type) {
         case GET_ARTIST:
+            console.log(action.payload)
             return {
                 data: action.payload,
                 loading: false,

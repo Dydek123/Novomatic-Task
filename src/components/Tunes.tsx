@@ -12,10 +12,12 @@ interface AlbumProps {
 const Album: FC<AlbumProps> = ({data}) => {
     return(
         <div className='box'>
-            <h2 className='title has-text-centered'>{data.collectionName}</h2>
-            <div className='has-text-centered'>
-                <p>{data.artistName}</p>
-                <button className='button is-primary'>Show more</button>
+            <div className='box-content'>
+                <h2 className='title has-text-centered'>{data.collectionName}</h2>
+                <div className='has-text-centered'>
+                    <p>{data.artistName}</p>
+                    <button className='button is-primary'>Show more</button>
+                </div>
             </div>
         </div>
     )

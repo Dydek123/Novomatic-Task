@@ -29,15 +29,16 @@ const Search: FC<SearchProps> = ({title}) => {
 
     return(
         <div className={styles.searchContainer}>
-            <form className="py-5" onSubmit={submitHandler}>
+            <form className="py-5 " onSubmit={submitHandler}>
                 <input
                     type="text"
-                    className={styles.containterInput}
-                    placeholder="Enter artist name"
+                    className='input mb-2'
+                    placeholder="Enter artist or album"
                     value={artist}
+                    style={{width:300}}
                     onChange={changeHandler}
                 />
-                <button>Search</button>
+                <button className='button is-primary'>Search</button>
             </form>
         </div>
     );

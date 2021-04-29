@@ -6,7 +6,7 @@ export const SET_ALERT = 'SET_ALERT';
 
 type address = number;
 
-export interface ITunes {
+export interface ITunesData {
     "wrapperType": string,
     "kind": string,
     "artistId": number,
@@ -37,9 +37,9 @@ export interface ITunes {
     "primaryGenreName": string,
 }
 
-export interface ITunesData {
+export interface ITunes {
     resultCount: number,
-    results: ITunes[]
+    results: ITunesData[]
 }
 
 export interface ITunesError {

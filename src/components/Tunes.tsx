@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, {FC} from "react";
 import {ITunes, ITunesData} from "../store/types";
 
 interface TunesProps {
@@ -10,13 +10,14 @@ interface AlbumProps {
 }
 
 const Album: FC<AlbumProps> = ({data}) => {
-    return(
-        <div className='box'>
+    return (
+        <div className='box mb-6'>
             <div className='box-content'>
-                <h2 className='title has-text-centered'>{data.collectionName}</h2>
+                <h3 className='title has-text-centered'>{data.collectionName}</h3>
                 <div className='has-text-centered'>
-                    <p>{data.artistName}</p>
-                    <button className='button is-primary'>Show more</button>
+                    <p className='mb-2'>{data.artistName} </p>
+                    <button className='button is-primary'>Show more<img src='note.svg' alt='melody'
+                                                                        className='box-melody'/></button>
                 </div>
             </div>
         </div>

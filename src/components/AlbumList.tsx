@@ -1,14 +1,6 @@
 import {ITunesData} from "../store/types";
-import React, {FC, FormEvent, useState} from "react";
-
-import { useDispatch, useSelector } from "react-redux";
-
-import {RootState } from "../store";
-import Search from "../components/Search";
-import Alert from "../components/Alert";
-import Tunes from "../components/Tunes";
-import { setAlert } from "../store/actions/alertActions";
-import {getAlbumDetails, getArtistDetails, setError, setLoading} from "../store/actions/tunesActions";
+import React, {FC, FormEvent} from "react";
+import {getAlbumDetails} from "../store/actions/tunesActions";
 
 interface AlbumProps {
     data: ITunesData;
@@ -18,27 +10,34 @@ const Album: FC<AlbumProps> = ({data}) => {
     const submitHandler = async (e: FormEvent<HTMLButtonElement>) => {
         const button = e.currentTarget;
         let songsData;
-        try{
+        try {
             songsData = await getAlbumDetails(e.currentTarget.value);
-            console.log(songsData)
             // @ts-ignore
             button.parentNode.lastChild.innerHTML = '';
-            if (button.innerText === 'Hide'){
-                button.innerText='Show more';
+            if (button.innerText === 'Hide') {
+                // @ts-ignore
+                button.parentNode.removeChild(button.parentNode.lastChild)
+                button.innerText = 'Show more';
                 return
             }
+            let container = document.createElement('div');
             for (const song of songsData.results) {
                 if (song.trackName !== undefined) {
+
                     let songName = document.createElement("p");
-                    songName.className = "mt-2";
-                    songName.innerText = song.trackName
-                    // @ts-ignore
-                    button.parentNode.lastChild.append(songName)
+                    songName.className = "mt-1";
+                    songName.innerHTML = `${song.trackName} (${song.trackPrice}$)
+                        <a href="${song.trackViewUrl}" target="_blank">
+                            <img src='note.svg' alt='melody' class='box-melody'/> 
+                        </a>
+                        `;
+                    container.appendChild(songName)
                 }
             }
+            // @ts-ignore
+            button.parentNode.append(container);
             button.innerText = 'Hide';
-        }
-        catch (e) {
+        } catch (e) {
             return null;
         }
     }
@@ -50,8 +49,8 @@ const Album: FC<AlbumProps> = ({data}) => {
                     <h3 className='title has-text-centered'>{data.collectionName}</h3>
                     <p className='mb-2'>{data.artistName}</p>
                 </div>
-                <button className='button is-primary' value={data.collectionId} onClick={submitHandler}>Show more</button>
-                <div></div>
+                <button className='button is-primary' value={data.collectionId} onClick={submitHandler}>Show more
+                </button>
             </div>
         </div>
     )

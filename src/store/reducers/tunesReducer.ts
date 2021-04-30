@@ -1,6 +1,6 @@
 import {GET_ARTIST, ITunesState, SET_LOADING, TunesAction} from "../types";
 
-const initialState : ITunesState= {
+const initialState: ITunesState = {
     data: null,
     loading: false,
     error: ''

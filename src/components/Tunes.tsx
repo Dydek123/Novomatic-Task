@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {ITunes, ITunesData} from "../store/types";
+import {ITunes} from "../store/types";
 import AlbumList from "./AlbumList";
 
 

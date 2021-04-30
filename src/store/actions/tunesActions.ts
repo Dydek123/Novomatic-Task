@@ -1,29 +1,15 @@
 import {ThunkAction} from 'redux-thunk';
 import {RootState} from "../index";
-import {GET_ALBUM, GET_ARTIST, ITunes, ITunesData, ITunesError, SET_ERROR, SET_LOADING, TunesAction} from '../types';
+import {GET_ALBUM, ITunes, ITunesError, SET_ERROR, SET_LOADING, TunesAction} from '../types';
 
-const replaceStringToFetch = (text:string) :string =>  {
-    return text.toLowerCase().replace(' ' , '+');
-}
-
-const getAlbumDetail = async (id: number) : Promise<number> => {
-    const res = await fetch(`https://itunes.apple.com/lookup?id=${id}&entity=song`);
-    if (!res.ok) {
-        const resData: ITunesError = await res.json();
-        throw new Error(resData.message);
-    }
-    const resData: ITunes = await res.json();
-    console.log(resData)
-    if (resData.resultCount === 0){
-        throw new Error('Album does not exist');
-    }
-    return resData.results[0].artistId;
+const replaceStringToFetch = (text: string): string => {
+    return text.toLowerCase().replace(' ', '+');
 }
 
 export const getArtistDetails = (name: string): ThunkAction<void, RootState, null, TunesAction> => {
     return async dispatch => {
         try {
-            const searchArtist:string = replaceStringToFetch(name);
+            const searchArtist: string = replaceStringToFetch(name);
             const requestStr = `https://itunes.apple.com/search?term=${searchArtist}&entity=album`
             console.log(requestStr)
             const res = await fetch(requestStr);
@@ -36,8 +22,7 @@ export const getArtistDetails = (name: string): ThunkAction<void, RootState, nul
                 type: GET_ALBUM,
                 payload: resData
             });
-        }
-        catch (err) {
+        } catch (err) {
             dispatch({
                 type: SET_ERROR,
                 payload: err.message
@@ -56,8 +41,7 @@ export const getAlbumDetails = async (albumId: string): Promise<ITunes> => {
     try {
         const resData: ITunes = await res.json();
         return resData;
-    }
-    catch (e) {
+    } catch (e) {
         throw new Error('Fetch error');
     }
 }

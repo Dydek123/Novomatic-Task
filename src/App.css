@@ -1,30 +1,30 @@
-.box{
+.box {
     width: 31%;
     margin-bottom: 2rem;
 }
 
-.box-content{
+.box-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
 }
 
-.box-content div{
+.box-content div {
     margin: auto;
 }
 
-.box-content button{
+.box-content button {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.box-melody{
+.box-melody {
     width: 1rem;
 }
 
-.tunes-container{
+.tunes-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -32,17 +32,17 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .box{
+    .box {
         width: 48%;
     }
 
-    .box-content{
+    .box-content {
         justify-content: space-around;
     }
 }
 
 @media only screen and (max-width: 576px) {
-    .box{
+    .box {
         width: 90%;
         margin-left: auto;
         margin-right: auto;

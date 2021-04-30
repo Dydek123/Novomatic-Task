@@ -1,8 +1,8 @@
 import React, {FC, FormEvent, useState} from "react";
 import {useDispatch} from "react-redux";
 
-import { setAlert } from "../store/actions/alertActions";
-import { setLoading, getArtistDetails } from "../store/actions/tunesActions";
+import {setAlert} from "../store/actions/alertActions";
+import {getArtistDetails, setLoading} from "../store/actions/tunesActions";
 import styles from './stylesheets/Search.module.css';
 
 interface SearchProps {
@@ -18,7 +18,7 @@ const Search: FC<SearchProps> = ({title}) => {
 
     const submitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(artist.trim() === '') {
+        if (artist.trim() === '') {
             return dispatch(setAlert('Artist name is required'));
         }
 
@@ -27,7 +27,7 @@ const Search: FC<SearchProps> = ({title}) => {
         setArtist('');
     }
 
-    return(
+    return (
         <div className={styles.searchContainer}>
             <form className="py-5 " onSubmit={submitHandler}>
                 <input
@@ -35,13 +35,14 @@ const Search: FC<SearchProps> = ({title}) => {
                     className='input mb-2'
                     placeholder="Enter artist or album"
                     value={artist}
-                    style={{width:'40%', borderRadius:'4px 0 0 4px'}}
+                    style={{width: '40%', borderRadius: '4px 0 0 4px'}}
                     onChange={changeHandler}
                 />
                 <button
                     className='button is-primary'
-                    style={{borderRadius:'0 4px 4px 0'}}
-                >Search</button>
+                    style={{borderRadius: '0 4px 4px 0'}}
+                >Search
+                </button>
             </form>
         </div>
     );

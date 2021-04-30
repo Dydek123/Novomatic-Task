@@ -30,3 +30,21 @@
     justify-content: space-between;
     width: 100%;
 }
+
+@media only screen and (max-width: 768px) {
+    .box{
+        width: 48%;
+    }
+
+    .box-content{
+        justify-content: space-around;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .box{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

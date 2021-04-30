@@ -35,10 +35,13 @@ const Search: FC<SearchProps> = ({title}) => {
                     className='input mb-2'
                     placeholder="Enter artist or album"
                     value={artist}
-                    style={{width:300}}
+                    style={{width:'40%', borderRadius:'4px 0 0 4px'}}
                     onChange={changeHandler}
                 />
-                <button className='button is-primary'>Search</button>
+                <button
+                    className='button is-primary'
+                    style={{borderRadius:'0 4px 4px 0'}}
+                >Search</button>
             </form>
         </div>
     );

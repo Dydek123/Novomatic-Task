@@ -1,13 +1,23 @@
 .box{
-    width: 30%;
+    width: 31%;
     margin-bottom: 2rem;
 }
 
 .box-content{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     height: 100%;
+}
+
+.box-content div{
+    margin: auto;
+}
+
+.box-content button{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .box-melody{

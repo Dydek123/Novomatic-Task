@@ -20,7 +20,6 @@ const App: FC = () => {
     <div className="has-text-centered">
       <Search title="Enter artist" />
       {loading ? <h2 className='is-size-3 py-2'>Loading</h2> : tunesData && <Tunes data={tunesData} />}
-      
       {alert && <Alert message={alert} onClose={() => dispatch(setAlert(''))} /> }
       {error && <Alert message={error} onClose={() => dispatch(setError())} />}
     </div>

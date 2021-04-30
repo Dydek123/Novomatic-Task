@@ -46,27 +46,19 @@ export const getArtistDetails = (name: string): ThunkAction<void, RootState, nul
     }
 }
 
-export const getAlbumDetails = (albumId: number): ThunkAction<void, RootState, null, TunesAction> => {
-    return async dispatch => {
-        try {
-            const requestStr = `https://itunes.apple.com/lookup?id=${albumId}&entity=song`
-            const res = await fetch(requestStr);
-            if (!res.ok) {
-                const resData: ITunesError = await res.json();
-                throw new Error(resData.message);
-            }
-            const resData: ITunes = await res.json();
-            dispatch({
-                type: GET_ARTIST,
-                payload: resData
-            });
-        }
-        catch (err) {
-            dispatch({
-                type: SET_ERROR,
-                payload: err.message
-            })
-        }
+export const getAlbumDetails = async (albumId: string): Promise<ITunes> => {
+    const requestStr = `https://itunes.apple.com/lookup?id=${albumId}&entity=song`
+    const res = await fetch(requestStr);
+    if (!res.ok) {
+        const resData: ITunesError = await res.json();
+        throw new Error(resData.message);
+    }
+    try {
+        const resData: ITunes = await res.json();
+        return resData;
+    }
+    catch (e) {
+        throw new Error('Fetch error');
     }
 }
 
